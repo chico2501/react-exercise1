@@ -101,13 +101,25 @@ const movies = {
 class App extends Component {
   render() {
     return (
-      <ol>
-        users.map((usuarios) => (
-        	<li>
-          		{usuarios.name}
-          	</li>
-        ))
-      </ol>
+      	<div>
+      		<div className="App-header">
+      			<img className="App-logo" src={logo} alt="Logo" />
+				<h1 className="App-title">Exercício 1 - Passando dados</h1>
+      		</div>
+      		<ul>
+				<h2>Lista de Filmes favoritos</h2>
+      			{profiles.map((profile) => {
+                  	const usuario = users[profile.userID].name;
+					const filme = movies[profile.favoriteMovieID].name;
+
+					return (
+                        <li key={profile.id}>
+                              <p>{`O filme favorito de `}<strong>{usuario}</strong>{` é `}<strong>{filme}</strong></p>
+                        </li>
+					);
+				})}
+      		</ul>
+		</div>
     );
   }
 }
